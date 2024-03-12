@@ -1,5 +1,5 @@
 <?php
-include('zklib/ZKLib.php');
+require(__DIR__ . '/vendor/lib/zklib/ZKLib.php');
 header('Content-Type: application/json');
 $enableGetDeviceInfo = true;
 $enableGetUsers = true;
