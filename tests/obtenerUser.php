@@ -1,11 +1,11 @@
 <?php
-require(__DIR__ . '/vendor/lib/zklib/ZKLib.php');
+require (__DIR__ . '/../vendor/lib/zklib/ZKLib.php');
 header('Content-Type: application/json');
 $enableGetDeviceInfo = true;
 $enableGetUsers = true;
 $enableGetData = true;
 
-$zk = new ZKLib('192.168.1.75');
+$zk = new ZKLib('192.168.0.126');
 $ret = $zk->connect();
 
 $users = $zk->getUser();
@@ -31,4 +31,3 @@ $respuesta = $datos; // Cambié el nombre de la variable para que sea más descr
 
 // Imprime la respuesta JSON antes de finalizar el script
 echo json_encode($respuesta);
-?>

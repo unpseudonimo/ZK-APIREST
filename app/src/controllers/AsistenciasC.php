@@ -7,14 +7,19 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class AsistenciasController
 {
+
+    // Definir la variable $ipreloj como propiedad de la clase
+    private static $ipreloj = '192.168.0.126';
+
+
     public function obtenerAsistencias(Request $request, Response $response, $args)
     {
         // Ruta absoluta al archivo ZKLib.php
         $zklibPath = __DIR__ . '/../../../vendor/lib/zklib/ZKLib.php';
         require_once($zklibPath);
 
-        $ipreloj = '192.168.1.75';
-        $zk = new ZKLib($ipreloj);
+
+        $zk = new ZKLib(self::$ipreloj);
         $zk->connect();
 
         $attendance = $zk->getAttendance();
@@ -57,8 +62,8 @@ class AsistenciasController
         $zklibPath = __DIR__ . '/../../../vendor/lib/zklib/ZKLib.php';
         require_once($zklibPath);
 
-        $ipreloj = '192.168.1.75';
-        $zk = new ZKLib($ipreloj);
+
+        $zk = new ZKLib(self::$ipreloj);
         $zk->connect();
 
         $respuesta = $zk->clearAttendance();
@@ -66,7 +71,6 @@ class AsistenciasController
 
         $zk->disconnect();
 
-        // Devolver la respuesta JSON en lugar de imprimirla
         $response->getBody()->write(json_encode($respuesta));
         return $response;
 

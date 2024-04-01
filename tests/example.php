@@ -30,11 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require(__DIR__ . '/../vendor/lib/zklib/ZKLib.php');
 
 
-    $zk = new ZKLib('192.168.1.75');
+    $zk = new ZKLib('192.168.0.126');
 
     $ret = $zk->connect();
-    //$currentDateTime = date("Y-m-d H:i:s");
-    $currentDateTime = '2024-03-11 23:00:00';
+    $currentDateTime = date("Y-m-d H:i:s");
+    //$currentDateTime = '2024-03-11 23:00:00';
     echo '' . $currentDateTime . '<br>';
 
     // Insertar la hora en el dispositivo ZK
